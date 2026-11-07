@@ -1,0 +1,14 @@
+{
+  "name": "The Realms — Fantasy Name Picker",
+  "short_name": "The Realms",
+  "description": "A fantasy name picker and fellowship generator.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#17150f",
+  "theme_color": "#17150f",
+  "icons": [
+    {"src":"assets/ring.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

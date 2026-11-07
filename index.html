@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17150f">
+  <meta name="description" content="A magical, offline-ready fantasy name picker and group generator.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/ring.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <title>The Realms — Fantasy Name Picker</title>
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="The Realms home"><span class="brand-mark">✧</span><span>THE REALMS<small>OF THE FOUR PEOPLES</small></span></a>
+    <nav><a href="#map">The Map</a><a href="#picker">The Choosing</a><a href="#groups">Fellowships</a></nav>
+    <button id="musicToggle" class="music-toggle" aria-pressed="false"><span>♫</span><span id="musicLabel">Music off</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">✦ AN AGE OF WONDERS BEGINS ✦</p>
+        <h1>Every name has<br><em>a place in the tale.</em></h1>
+        <p class="hero-lede">Gather the names. Choose a people. Let the ancient ring reveal who is called.</p>
+        <div class="hero-actions"><a class="button button-gold" href="#picker">Enter the realms <span>→</span></a><a class="text-link" href="#map">Explore the map ↓</a></div>
+      </div>
+      <div class="hero-art" aria-label="An enchanted golden ring floating above an ancient map">
+        <div class="hero-sigil">✧</div><div class="hero-ring"><span></span></div>
+        <div class="hero-caption">THE PRECIOUS RING<small>THE CHOOSING AWAITS</small></div>
+      </div>
+    </section>
+
+    <section class="section map-section" id="map">
+      <div class="section-heading"><div><p class="eyebrow">A WORLD TO DISCOVER</p><h2>The Four Realms</h2></div><p>Four peoples, four paths, one gathering place.</p></div>
+      <div class="map-frame">
+        <div class="map-topline"><span>✦ THE KNOWN LANDS ✦</span><span>AN ILLUSTRATED FANTASY ATLAS</span></div>
+        <img class="world-map" src="assets/realm-map.svg" alt="Original fantasy map showing the four territories: the Emeraldwood, the Shirelands, the Ironspine Mountains, and the Kingdom of Men">
+        <div class="map-legend"><span><i class="dot elf"></i> Elvenwood</span><span><i class="dot hobbit"></i> Shirelands</span><span><i class="dot dwarf"></i> Ironspine</span><span><i class="dot men"></i> Kingdoms of Men</span></div>
+      </div>
+    </section>
+
+    <section class="section peoples-section" id="peoples">
+      <div class="section-heading"><div><p class="eyebrow">CHOOSE YOUR PATH</p><h2>The Four Peoples</h2></div><p>Each realm has its own character and atmosphere.</p></div>
+      <div class="people-grid">
+        <article class="people-card elf-card" data-race-card="elves"><img src="assets/elves.svg" alt="Enchanted elven forest and silver towers"><div class="people-info"><span class="realm-kicker">THE ENCHANTED REALM</span><h3>Elves</h3><p>Silver boughs, ancient wisdom, and starlit halls.</p><button class="realm-select" data-race="elves">Choose the Elves <span>↗</span></button></div></article>
+        <article class="people-card hobbit-card" data-race-card="hobbits"><img src="assets/hobbits.svg" alt="Green hills and cozy round-door homes"><div class="people-info"><span class="realm-kicker">THE SHIRELANDS</span><h3>Hobbits</h3><p>Warm hearths, green hills, and simple joys.</p><button class="realm-select" data-race="hobbits">Choose the Hobbits <span>↗</span></button></div></article>
+        <article class="people-card dwarf-card" data-race-card="dwarves"><img src="assets/dwarves.svg" alt="Ancient dwarven halls carved into a mountain"><div class="people-info"><span class="realm-kicker">THE IRONSPINE</span><h3>Dwarves</h3><p>Stone halls, bright-forged craft, and steadfast hearts.</p><button class="realm-select" data-race="dwarves">Choose the Dwarves <span>↗</span></button></div></article>
+        <article class="people-card men-card" data-race-card="men"><img src="assets/men.svg" alt="A human kingdom with a tall citadel"><div class="people-info"><span class="realm-kicker">THE WESTERN KINGDOMS</span><h3>Men</h3><p>Royal banners, brave journeys, and rising kingdoms.</p><button class="realm-select" data-race="men">Choose the Men <span>↗</span></button></div></article>
+      </div>
+    </section>
+
+    <section class="section picker-section" id="picker">
+      <div class="section-heading"><div><p class="eyebrow">THE MOMENT OF FATE</p><h2>The Choosing</h2></div><p>Draw from one people—or let all four realms answer.</p></div>
+      <div class="picker-layout">
+        <div class="control-panel">
+          <label class="field-label" for="raceSelect">THE GATHERING</label>
+          <select id="raceSelect"><option value="all">All peoples — the whole realm</option><option value="elves">Elves</option><option value="hobbits">Hobbits</option><option value="dwarves">Dwarves</option><option value="men">Men</option></select>
+          <div class="pool-summary"><span>Names in this gathering</span><strong id="poolCount">0</strong></div>
+          <label class="field-label" for="nameInput">ADD A NAME</label>
+          <div class="add-row"><input id="nameInput" type="text" maxlength="48" placeholder="Write a name…"><button id="addName" class="icon-button" aria-label="Add name">＋</button></div>
+          <label class="field-label" for="raceForNew">ASSIGN TO A PEOPLE</label>
+          <select id="raceForNew"><option value="elves">Elves</option><option value="hobbits">Hobbits</option><option value="dwarves">Dwarves</option><option value="men">Men</option></select>
+          <div class="import-block"><label class="field-label" for="bulkNames">ADD MANY NAMES</label><textarea id="bulkNames" rows="3" placeholder="Enter one name per line…"></textarea><button id="importNames" class="button button-outline button-small">Add names to selected people</button></div>
+          <div class="manage-row"><button id="exportNames" class="quiet-button">Export names</button><button id="clearNames" class="quiet-button danger">Clear all names</button></div>
+          <p class="tiny-note">Your list is saved on this device in this browser. No account is needed.</p>
+        </div>
+        <div class="reveal-panel" id="revealPanel">
+          <div class="reveal-stars">✧　·　✦　·　✧</div>
+          <div class="ring-stage" id="ringStage"><div class="ring-glow"></div><div class="precious-ring"><span class="ring-inscription">✧ ✦ ✧ ✦ ✧</span></div><div class="flame flame-a"></div><div class="flame flame-b"></div></div>
+          <p class="reveal-overline" id="revealOverline">THE ANCIENT RING STIRS</p>
+          <h3 id="chosenName" aria-live="polite">Who shall be chosen?</h3>
+          <p class="chosen-meta" id="chosenMeta">Add names to begin the choosing.</p>
+          <button id="drawButton" class="button button-gold draw-button">Reveal a name <span>✧</span></button>
+          <div class="reveal-tools"><label class="check-label"><input type="checkbox" id="removeAfter" checked> Remove chosen name from the pool</label><button id="resetDraw" class="quiet-button">Reset draw history</button></div>
+          <div class="history"><span class="field-label">RECENTLY CHOSEN</span><ol id="historyList"><li class="empty-history">No names chosen yet.</li></ol></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section groups-section" id="groups">
+      <div class="section-heading"><div><p class="eyebrow">NO ONE WALKS ALONE</p><h2>Form a Fellowship</h2></div><p>Gather names into balanced groups for the journey ahead.</p></div>
+      <div class="group-tool">
+        <div class="group-controls">
+          <label class="field-label" for="groupRace">CHOOSE THE GATHERING</label><select id="groupRace"><option value="all">All peoples</option><option value="elves">Elves</option><option value="hobbits">Hobbits</option><option value="dwarves">Dwarves</option><option value="men">Men</option></select>
+          <label class="field-label" for="groupCount">NUMBER OF FELLOWSHIPS</label><input id="groupCount" type="number" min="2" max="30" value="4">
+          <button id="makeGroups" class="button button-gold">Form the fellowships ✧</button>
+          <button id="copyGroups" class="button button-outline button-small" disabled>Copy group list</button>
+          <p class="tiny-note">Names are shuffled and distributed as evenly as possible.</p>
+        </div>
+        <div class="group-results" id="groupResults"><div class="group-empty"><span>✧</span><h3>The journey has not begun.</h3><p>Your fellowships will appear here.</p></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-mark">✧</div><p>THE REALMS</p><small>AN ORIGINAL FANTASY-INSPIRED NAME PICKER · MADE FOR YOUR GATHERING</small><a href="#top" class="back-top">Return to the beginning ↑</a></footer>
+  <audio id="backgroundAudio" src="assets/background.wav" loop preload="none"></audio>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
